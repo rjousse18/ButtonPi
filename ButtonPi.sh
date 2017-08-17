@@ -39,7 +39,7 @@ PiMeteo ()
 	tempactu=$(echo $meteo | jq '.main.temp')
 	tempmin=$(echo $meteo | jq '.main.temp_min')
 	tempmax=$(echo $meteo | jq '.main.temp_max')
-	wget -q -U Mozilla -O output.mp3 "http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q='La température actuelle pour $ville est de $tempactu degrés. La température minimum sera de $tempmin degrés. La température maximum sera de $tempmax degrés'&tl=Fr-fr"
+	wget -q -U Mozilla -O output.mp3 "http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q='Température pour la journée à  $ville. De $tempmin degrés à $tempmax degrés'&tl=Fr-fr"
 	mplayer output.mp3
 	let "compte = compte + 1" && Principale
 }
@@ -99,17 +99,19 @@ bcpath=$(which bc)
 if [ "$bcpath" = "" ]
 then
         echo "ERREUR: bc non-installé"
-        exit 69 # EX_UNAVAILABLE
+	exit 69 # EX_UNAVAILABLE
 else
         echo "bc : installé"
 fi
 
-wiringpipath=$(which wiringpi)
+mplayerpath=$(which mplayer)
+if [ "$mplayerpath" = "" ]
+
 then
-        echo "ERREUR: wiringpi non-installé"
+        echo "ERREUR: mplayer non-installé"
         exit 69 # EX_UNAVAILABLE
 else
-        echo "wiringpi : installé"
+        echo "mplayer : installé"
 fi
 
 Principale
