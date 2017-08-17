@@ -86,4 +86,30 @@ gpio write 0 0 && gpio write 2 0 && gpio write 3 0
  done
 }
 
+jqpath=$(which jq)
+if [ "$jqpath" = "" ]
+then
+        echo "ERREUR: jq non-installé"
+        exit 69 # EX_UNAVAILABLE
+else
+        echo "jq : installé"
+fi
+
+bcpath=$(which bc)
+if [ "$bcpath" = "" ]
+then
+        echo "ERREUR: bc non-installé"
+        exit 69 # EX_UNAVAILABLE
+else
+        echo "bc : installé"
+fi
+
+wiringpipath=$(which wiringpi)
+then
+        echo "ERREUR: wiringpi non-installé"
+        exit 69 # EX_UNAVAILABLE
+else
+        echo "wiringpi : installé"
+fi
+
 Principale
