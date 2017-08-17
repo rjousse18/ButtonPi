@@ -1,0 +1,9 @@
+meteo=`curl "http://api.openweathermap.org/data/2.5/weather?q=St-omer,FR&units=metric&appid=85a4e3c55b73909f42c6a23ec35b7147"`
+
+ville=$(echo $meteo | jq '.name')
+
+tempactu=$(echo $meteo | jq '.main.temp')
+
+tempmin=$(echo $meteo | jq '.main.temp_min')
+
+tempmax=$(echo $meteo | jq '.main.temp_max')
